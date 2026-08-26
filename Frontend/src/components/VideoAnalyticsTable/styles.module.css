@@ -1,0 +1,38 @@
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 12px;
+  border-bottom: 1px solid #eceff1;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.dataTable th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.numeric {
+  text-align: right;
+}
+
+.videoTitle {
+  display: block;
+  font-weight: 600;
+}
+
+.videoUrl {
+  display: block;
+  font-size: 0.75rem;
+  color: #7b8794;
+  word-break: break-all;
+}

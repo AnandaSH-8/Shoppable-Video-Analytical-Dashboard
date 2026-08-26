@@ -1,0 +1,64 @@
+import { useMemo } from "react";
+import type { VideoAnalytics } from "../../types";
+import styles from "./styles.module.css";
+
+interface VideoAnalyticsTableProps {
+  rows: VideoAnalytics[];
+}
+
+interface VideoAnalyticsRowView extends VideoAnalytics {
+  conversionRate: number;
+}
+
+const formatPercent = (value: number): string => `${(value * 100).toFixed(2)}%`;
+
+export const VideoAnalyticsTable = ({ rows }: VideoAnalyticsTableProps) => {
+  const viewRows = useMemo<VideoAnalyticsRowView[]>(
+    () =>
+      rows.map((row) => ({
+        ...row,
+        conversionRate: row.views > 0 ? row.addToCarts / row.views : 0,
+      })),
+    [rows],
+  );
+
+  return (
+    <div className={styles["table-wrapper"]}>
+      <table className={styles["data-table"]}>
+        <thead>
+          <tr>
+            <th scope="col">Video</th>
+            <th scope="col" className={styles["numeric"]}>
+              Views
+            </th>
+            <th scope="col" className={styles["numeric"]}>
+              Clicks
+            </th>
+            <th scope="col" className={styles["numeric"]}>
+              Conversions
+            </th>
+            <th scope="col" className={styles["numeric"]}>
+              Conversion Rate
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {viewRows.map((row) => (
+            <tr key={row.videoId}>
+              <td>
+                <span className={styles["video-title"]}>{row.title}</span>
+                <span className={styles["video-url"]}>{row.videoUrl}</span>
+              </td>
+              <td className={styles["numeric"]}>{row.views}</td>
+              <td className={styles["numeric"]}>{row.clicks}</td>
+              <td className={styles["numeric"]}>{row.addToCarts}</td>
+              <td className={styles["numeric"]}>
+                {formatPercent(row.conversionRate)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
