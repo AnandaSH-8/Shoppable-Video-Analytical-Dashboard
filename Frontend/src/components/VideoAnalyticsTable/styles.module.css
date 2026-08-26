@@ -21,9 +21,13 @@
   font-weight: 700
 }
 
+.tableRowData
 .tableHeader {
   text-align: right;
-  font-size: 1rem;
+}
+
+.tableHeader{
+   font-size: 1rem;
 }
 
 .videoTitle {

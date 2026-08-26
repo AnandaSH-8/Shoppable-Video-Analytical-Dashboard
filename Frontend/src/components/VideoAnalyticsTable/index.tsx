@@ -53,10 +53,10 @@ export const VideoAnalyticsTable = ({ rows }: VideoAnalyticsTableProps) => {
                   alt={row.title}
                 />
               </td>
-              <td className={styles["numeric"]}>{row.views}</td>
-              <td className={styles["numeric"]}>{row.clicks}</td>
-              <td className={styles["numeric"]}>{row.addToCarts}</td>
-              <td className={styles["numeric"]}>
+              <td className={styles.tableRowData}>{row.views}</td>
+              <td className={styles.tableRowData}>{row.clicks}</td>
+              <td className={styles.tableRowData}>{row.addToCarts}</td>
+              <td className={styles.tableRowData}>
                 {formatPercent(row.conversionRate)}
               </td>
             </tr>
