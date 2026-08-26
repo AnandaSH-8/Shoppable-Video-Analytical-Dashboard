@@ -181,3 +181,12 @@ Then open `http://localhost:5173` in your browser.
 ## Personal Project Contributions - Links
 
 `https://ashets-pulse.vercel.app/` *
+
+
+## Unlisted Youtube Link - Strong Candidate Reason
+`https://youtu.be/TIMXtSCH6zo`
+
+
+
+## Technical Video WalkThrough
+`https://youtu.be/KbRmSuGR02w`

@@ -45,7 +45,6 @@ export const useVideoAnalytics = (
   const retry = useCallback((): Promise<void> => load(true), [load]);
 
   useEffect(() => {
-    setRetryCount(0);
     const fetchData = async (): Promise<void> => {
       await load();
     };
