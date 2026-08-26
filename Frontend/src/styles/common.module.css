@@ -14,9 +14,10 @@
 }
 
 .ghost {
-  background: transparent;
+  background: gray;
   border: 1px solid #cbd2d9;
   color: #1f2933;
+  padding:5px 15px;
 }
 
 .error {

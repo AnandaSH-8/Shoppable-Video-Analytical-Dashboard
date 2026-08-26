@@ -47,7 +47,11 @@ export const VideoAnalyticsTable = ({ rows }: VideoAnalyticsTableProps) => {
             <tr key={row.videoId}>
               <td>
                 <span className={styles.videoTitle}>{row.title}</span>
-                <span className={styles.videoUrl}>{row.videoUrl}</span>
+                <img
+                  className={styles.videoUrl}
+                  src={row.videoUrl}
+                  alt={row.title}
+                />
               </td>
               <td className={styles["numeric"]}>{row.views}</td>
               <td className={styles["numeric"]}>{row.clicks}</td>
