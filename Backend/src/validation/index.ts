@@ -26,7 +26,7 @@ export const validateCreateEventPayload = (
     throw new HttpError(400, "Request body must be a JSON object");
   }
 
-  const { videoId, eventType, timestamp } = body as Record<string, unknown>;
+  const { videoId, eventType } = body as Record<string, unknown>;
 
   if (
     typeof videoId !== "number" ||
@@ -46,18 +46,7 @@ export const validateCreateEventPayload = (
     );
   }
 
-  let normalizedTimestamp: string | undefined;
-  if (timestamp !== undefined) {
-    if (typeof timestamp !== "string" || Number.isNaN(Date.parse(timestamp))) {
-      throw new HttpError(
-        400,
-        "timestamp must be a valid ISO 8601 date string",
-      );
-    }
-    normalizedTimestamp = timestamp;
-  }
-
-  return { videoId, eventType, timestamp: normalizedTimestamp };
+  return { videoId, eventType };
 };
 
 const parsePositiveInt = (

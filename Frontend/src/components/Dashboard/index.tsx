@@ -9,10 +9,12 @@ const PAGE_SIZE = 4;
 
 export const Dashboard = () => {
   const [page, setPage] = useState<number>(1);
-  const { data, isLoading, error, refresh } = useVideoAnalytics(
+  const { data, isLoading, error, retryCount, maxRetries, refresh } = useVideoAnalytics(
     page,
     PAGE_SIZE,
   );
+
+  const retriesExhausted = retryCount >= maxRetries;
 
   const videoIds = useMemo<number[]>(
     () => (data ? data.items.map((item) => item.videoId) : []),
@@ -37,15 +39,17 @@ export const Dashboard = () => {
             role="alert"
           >
             <p className={commonStyles.error}>{error}</p>
-            <button
-              type="button"
-              className={commonStyles.button}
-              onClick={() => {
-                void refresh();
-              }}
-            >
-              Retry
-            </button>
+            {retriesExhausted ? (
+              <p className={commonStyles.error}>Max retries reached. Please refresh the page.</p>
+            ) : (
+              <button
+                type="button"
+                className={commonStyles.button}
+                onClick={() => { void refresh(); }}
+              >
+                Retry ({maxRetries - retryCount} left)
+              </button>
+            )}
           </div>
         )}
 
