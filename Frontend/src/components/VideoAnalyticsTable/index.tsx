@@ -23,8 +23,8 @@ export const VideoAnalyticsTable = ({ rows }: VideoAnalyticsTableProps) => {
   );
 
   return (
-    <div className={styles["table-wrapper"]}>
-      <table className={styles["data-table"]}>
+    <div className={styles.tableWrapper}>
+      <table className={styles.dataTable}>
         <thead>
           <tr>
             <th scope="col">Video</th>
@@ -46,8 +46,8 @@ export const VideoAnalyticsTable = ({ rows }: VideoAnalyticsTableProps) => {
           {viewRows.map((row) => (
             <tr key={row.videoId}>
               <td>
-                <span className={styles["video-title"]}>{row.title}</span>
-                <span className={styles["video-url"]}>{row.videoUrl}</span>
+                <span className={styles.videoTitle}>{row.title}</span>
+                <span className={styles.videoUrl}>{row.videoUrl}</span>
               </td>
               <td className={styles["numeric"]}>{row.views}</td>
               <td className={styles["numeric"]}>{row.clicks}</td>

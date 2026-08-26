@@ -32,9 +32,6 @@
   color: #52606d;
 }
 
-.stateError {
-  color: #c0392b;
-}
 
 .pagination {
   display: flex;
@@ -48,9 +45,4 @@
 .paginationInfo {
   font-size: 0.85rem;
   color: #52606d;
-}
-
-.notFound {
-  color: #c0392b;
-  margin-bottom: 3vh;
 }

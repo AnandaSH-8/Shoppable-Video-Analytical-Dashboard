@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { createEngagementEvent } from "../../services/api";
 import type { EngagementEventType } from "../../types";
-import buttonStyles from "../../styles/button.module.css";
+import commonStyles from "../../styles/common.module.css";
 import styles from "./styles.module.css";
 
 interface SimulateTrafficButtonProps {
@@ -48,7 +48,7 @@ export const SimulateTrafficButton = ({
     <div className={styles.simulate}>
       <button
         type="button"
-        className={buttonStyles.button}
+        className={commonStyles.button}
         onClick={() => {
           void simulate();
         }}
@@ -57,7 +57,7 @@ export const SimulateTrafficButton = ({
         {isSending ? "Simulating…" : "Simulate Traffic"}
       </button>
       {error !== null && (
-        <span className={styles.error} role="alert">
+        <span className={commonStyles.error} role="alert">
           {error}
         </span>
       )}

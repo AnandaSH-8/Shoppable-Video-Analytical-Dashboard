@@ -3,7 +3,7 @@ import { useVideoAnalytics } from "../../hooks/useVideoAnalytics";
 import { SimulateTrafficButton } from "../SimulateTrafficButton";
 import { VideoAnalyticsTable } from "../VideoAnalyticsTable";
 import styles from "./styles.module.css";
-import buttonStyles from "../../styles/button.module.css";
+import commonStyles from "../../styles/common.module.css";
 
 const PAGE_SIZE = 10;
 
@@ -33,13 +33,13 @@ export const Dashboard = () => {
 
         {!isLoading && error !== null && (
           <div
-            className={styles.state + " " + styles["state--error"]}
+            className={styles.state + " " + commonStyles["error"]}
             role="alert"
           >
-            <p className={styles.notFound}>No video analytics available.</p>
+            <p className={commonStyles.error}>{error}</p>
             <button
               type="button"
-              className={buttonStyles.button}
+              className={commonStyles.button}
               onClick={() => {
                 void refresh();
               }}
@@ -63,18 +63,18 @@ export const Dashboard = () => {
               <footer className={styles.pagination}>
                 <button
                   type="button"
-                  className={buttonStyles.ghost}
+                  className={commonStyles.ghost}
                   onClick={() => setPage((current) => Math.max(current - 1, 1))}
                   disabled={page <= 1}
                 >
                   Previous
                 </button>
-                <span className={styles.pagination__info}>
+                <span className={styles.paginationInfo}>
                   Page {data.page} of {totalPages} · {data.total} videos
                 </span>
                 <button
                   type="button"
-                  className={buttonStyles.ghost}
+                  className={commonStyles.ghost}
                   onClick={() => setPage((current) => current + 1)}
                   disabled={page >= totalPages}
                 >

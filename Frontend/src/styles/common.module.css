@@ -18,3 +18,8 @@
   border: 1px solid #cbd2d9;
   color: #1f2933;
 }
+
+.error {
+  color: #c0392b;
+  font-size: 0.8rem;
+}
