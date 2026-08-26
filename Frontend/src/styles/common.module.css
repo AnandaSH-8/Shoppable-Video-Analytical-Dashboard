@@ -13,13 +13,6 @@
   cursor: not-allowed;
 }
 
-.ghost {
-  background: gray;
-  border: 1px solid #cbd2d9;
-  color: #1f2933;
-  padding:5px 15px;
-}
-
 .error {
   color: #c0392b;
   font-size: 0.8rem;

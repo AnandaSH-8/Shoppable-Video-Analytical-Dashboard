@@ -18,11 +18,12 @@
 
 .dataTable th {
   background: #f8fafc;
-  font-weight: 600;
+  font-weight: 700
 }
 
-.numeric {
+.tableHeader {
   text-align: right;
+  font-size: 1rem;
 }
 
 .videoTitle {
@@ -34,5 +35,5 @@
   display: block;
   margin-top: 4px;
   max-width: 100%;
-  height: 100px;
+  height: 90px;
 }

@@ -5,7 +5,7 @@ import { VideoAnalyticsTable } from "../VideoAnalyticsTable";
 import styles from "./styles.module.css";
 import commonStyles from "../../styles/common.module.css";
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 4;
 
 export const Dashboard = () => {
   const [page, setPage] = useState<number>(1);
@@ -63,7 +63,7 @@ export const Dashboard = () => {
               <footer className={styles.pagination}>
                 <button
                   type="button"
-                  className={commonStyles.ghost}
+                  className={commonStyles.button}
                   onClick={() => setPage((current) => Math.max(current - 1, 1))}
                   disabled={page <= 1}
                 >
@@ -74,7 +74,7 @@ export const Dashboard = () => {
                 </span>
                 <button
                   type="button"
-                  className={commonStyles.ghost}
+                  className={commonStyles.button}
                   onClick={() => setPage((current) => current + 1)}
                   disabled={page >= totalPages}
                 >

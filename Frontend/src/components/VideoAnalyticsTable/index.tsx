@@ -28,16 +28,16 @@ export const VideoAnalyticsTable = ({ rows }: VideoAnalyticsTableProps) => {
         <thead>
           <tr>
             <th scope="col">Video</th>
-            <th scope="col" className={styles["numeric"]}>
+            <th scope="col" className={styles.tableHeader}>
               Views
             </th>
-            <th scope="col" className={styles["numeric"]}>
+            <th scope="col" className={styles.tableHeader}>
               Clicks
             </th>
-            <th scope="col" className={styles["numeric"]}>
+            <th scope="col" className={styles.tableHeader}>
               Conversions
             </th>
-            <th scope="col" className={styles["numeric"]}>
+            <th scope="col" className={styles.tableHeader}>
               Conversion Rate
             </th>
           </tr>
