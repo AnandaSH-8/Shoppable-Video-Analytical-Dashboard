@@ -1,0 +1,89 @@
+import { useMemo, useState } from "react";
+import { useVideoAnalytics } from "../../hooks/useVideoAnalytics";
+import { SimulateTrafficButton } from "../SimulateTrafficButton";
+import { VideoAnalyticsTable } from "../VideoAnalyticsTable";
+import styles from "./styles.module.css";
+import buttonStyles from "../../styles/button.module.css";
+
+const PAGE_SIZE = 10;
+
+export const Dashboard = () => {
+  const [page, setPage] = useState<number>(1);
+  const { data, isLoading, error, refresh } = useVideoAnalytics(
+    page,
+    PAGE_SIZE,
+  );
+
+  const videoIds = useMemo<number[]>(
+    () => (data ? data.items.map((item) => item.videoId) : []),
+    [data],
+  );
+
+  const totalPages = data ? Math.max(data.totalPages, 1) : 1;
+
+  return (
+    <main className={styles.dashboard}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Video Engagement Dashboard</h1>
+        <SimulateTrafficButton videoIds={videoIds} onSimulated={refresh} />
+      </header>
+
+      <section className={styles.panel}>
+        {isLoading && <p className={styles.state}>Loading video analytics…</p>}
+
+        {!isLoading && error !== null && (
+          <div
+            className={styles.state + " " + styles["state--error"]}
+            role="alert"
+          >
+            <p className={styles.notFound}>No video analytics available.</p>
+            <button
+              type="button"
+              className={buttonStyles.button}
+              onClick={() => {
+                void refresh();
+              }}
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
+        {!isLoading &&
+          error === null &&
+          data !== null &&
+          data.items.length === 0 && <p className="state">No videos found.</p>}
+
+        {!isLoading &&
+          error === null &&
+          data !== null &&
+          data.items.length > 0 && (
+            <>
+              <VideoAnalyticsTable rows={data.items} />
+              <footer className={styles.pagination}>
+                <button
+                  type="button"
+                  className={buttonStyles.ghost}
+                  onClick={() => setPage((current) => Math.max(current - 1, 1))}
+                  disabled={page <= 1}
+                >
+                  Previous
+                </button>
+                <span className={styles.pagination__info}>
+                  Page {data.page} of {totalPages} · {data.total} videos
+                </span>
+                <button
+                  type="button"
+                  className={buttonStyles.ghost}
+                  onClick={() => setPage((current) => current + 1)}
+                  disabled={page >= totalPages}
+                >
+                  Next
+                </button>
+              </footer>
+            </>
+          )}
+      </section>
+    </main>
+  );
+};
