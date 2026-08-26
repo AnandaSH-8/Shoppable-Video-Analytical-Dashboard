@@ -1,0 +1,11 @@
+.simulate {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.8rem;
+}
